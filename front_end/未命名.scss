@@ -249,3 +249,21 @@ body > * {
 #menu ul li ul li:hover, #menu ul li ul li a:hover {
 	background:#dfdfdf;
 }
+
+// Media Query ，也就是當寬度 < 768 px 時將載入下面這段 CSS :
+ @media only screen and (max-width: 768px) {
+     //CSS的內容
+     ....
+}
+
+// Media Query ，也就是當寬度 < 480 px 時將載入下面這段 CSS :
+ @media only screen and (max-width: 480px) {
+     //CSS的內容
+     ....
+}
+
+// Media Query ，也就是當寬度 < 320 px 時將載入下面這段 CSS :
+ @media only screen and (max-width: 320px) {
+     //CSS的內容
+     ....
+}
