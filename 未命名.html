@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <script>
+    var value = 100;
+        var slide;
+        window.onload = function () {
+            slide = document.getElementById('msg');
+            slide.innerHTML = value;
+            slide.addEventListener('mousewheel', changeNumber, false);
+        }
+        function changeNumber(e) {
+            if (e.wheelDelta == 120 ) {
+                value += 10;
+            } else {
+                value -= 10;
+            }
+            slide.innerHTML =  value  ;
+            return false;
+        }
+  </script>
+</head>
+
+<body>
+  <a href="tel:1243433">02-54488566</a>
+  <div id="msg" style="height:120px;width:560px;… "> </div>
+</body>
+
+</html>
