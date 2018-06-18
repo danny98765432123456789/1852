@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="menu.css" type="text/css">
+  <title>onChange / onArrowClick events</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css">
+  <link rel="stylesheet" type="text/css" href="codebase/dhtmlxcalendar.css">
+  <script src="codebase/dhtmlxcalendar.js"></script>
+  <style>
+    #calendarHere {
+      position: relative;
+      height: 400px;
+    }
+
+    #logsHere {
+      width: 700px;
+      height: 150px;
+      overflow: auto;
+      border: 1px solid #dfdfdf;
+      font-family: Roboto, Arial, Helvetica;
+      font-size: 14px;
+      color: #404040;
+    }
+  </style>
+  <script>
+    var myCalendar;
+    		var logObj;
+    		var logInd = 0;
+    		var logData = [];
+    		
+    		function doOnLoad() {
+    			
+    			myCalendar = new dhtmlXCalendarObject("calendarHere");
+    			myCalendar.hideTime();
+    			myCalendar.show();
+    			
+    			myCalendar.attachEvent("onChange", function(d){
+    				logData.push((++logInd)+") onChange event, "+myCalendar.getFormatedDate(null,d));
+    				writeLog();
+    			});
+    			myCalendar.attachEvent("onArrowClick", function(d_old,d_new){
+    				logData.push((++logInd)+") onArrowClick event, "+myCalendar.getFormatedDate("%F %Y",d_new));
+    				//writeLog();
+    			});
+    		}
+    		
+    		
+    		function writeLog() {
+    			if (!logObj) logObj = document.getElementById("logsHere");
+    			var t = "";
+    			for (var q=logData.length-1; q>=Math.max(logData.length-6,0); q--) t += logData[q]+"<br>";
+    			logObj.innerHTML = t;
+    		}
+  </script>
+</head>
+
+<body class="bg-primary" onload="doOnLoad();">
+  <nav class="navbar navbar-expand-md navbar-dark w-100 bg-secondary" style="z-index: 8; position:fixed; top:0px; left:0px; background-color:#0000;">
+    <div class="container">
+      <a class="ico" href="#"><b class="text-muted "><font size="6" class="left:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html"><i class=""></i>
+              <font size="5">HOME</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#OUR_PLACE"><i class="fa d-inline fa-lg "></i>
+              <font size="5">OUR PLACE</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa d-inline fa-lg "></i>
+              <font size="5">MENU</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#map"><i class="fa d-inline fa-lg "></i>
+              <font size="5">LOCATION</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="margin-bottom: 20px;">Change month/year in selector and click left-right arrows</div>
+  <div id="logsHere" style="z-index: 8; position:fixed; top:80px;"></div>
+  <div class="py-5 bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center justify-content-center">Please select the numbers of people</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="drop" style="z-index: 11">
+            <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 9;"> Adult </div>
+            <div class="option text-secondary" data-value="wow"> One </div>
+            <div class="option text-secondary" data-value="drop"> Two </div>
+            <div class="option text-secondary" data-value="select"> Three </div>
+            <div class="option text-secondary" data-value="custom"> Four </div>
+            <div class="option text-secondary" data-value="animation"> Five </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="drop1" style="z-index: 10">
+            <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 8;"> Child </div>
+            <div class="option text-secondary" data-value="wow"> One </div>
+            <div class="option text-secondary" data-value="drop"> Two </div>
+            <div class="option text-secondary" data-value="select"> Three </div>
+            <div class="option text-secondary" data-value="custom"> Four </div>
+            <div class="option text-secondary" data-value="animation"> Five </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 bg-primary">
+    <div class="container">
+      <div class="row text-center justify-content-center">
+        <div class="col-md-4">
+          <div id="calendarHere" bg-dark="" py-5="" class="bg-secondary" style="z-index: 4;  position:fixed; top:500px; left:840px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-primary" href="">Button </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

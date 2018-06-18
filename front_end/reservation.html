@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="menu.css" type="text/css">
+  <title>Reservation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css">
+  <link rel="stylesheet" type="text/css" href="codebase/dhtmlxcalendar.css">
+  <script src="codebase/dhtmlxcalendar.js"></script>
+  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+  <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- <script src="js/index.js"></script> -->
+  <script>
+    $(document).ready(function() {
+
+      process_drop();
+      process_drop1();
+      process_sumit();
+    });
+
+    function process_sumit() {
+      // var oform = document.forms['form'];
+      // var name = oform.elements['name'].value;
+      // var account = oform.elements['account'].value;
+      // var coor1 = oform.elements['coor1'].value;
+      // var coor2 = oform.elements['coor2'].value;
+      // var coor6 = oform.elements['coor6'].value;
+      $("#buttonsubmit").click(function() {
+
+        var oform = document.forms['form'];
+        var name = oform.elements['name'].value;
+        var phone = oform.elements['phone'].value;
+        var email = oform.elements['email'].value;
+        var note = oform.elements['note'].value;
+        // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
+        // alert(email.toString());
+        alert(kidfromdrop);
+        alert(adultfromdrop);
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3000/reservation_online',
+          data: {
+            name: name.toString(),
+            phone: phone.toString(),
+            email: email.toString(),
+            note: note.toString(),
+            date: datefromcalendar,
+            adult: adultfromdrop,
+            kid: kidfromdrop
+          },
+          success: function(data) {
+            alert("Success!!");
+          },
+          error: function(err) {
+            alert(err);
+          },
+          contentType: "application/x-www-form-urlencoded",
+          dataType: "Text"
+
+        });
+      })
+    }
+
+    function process_drop1() {
+      $(".drop1 .option").click(function() {
+        var val1 = $(this).attr("data-value"),
+          $drop = $(".drop1"),
+          prevActive = $(".drop .option.active").attr("data-value"),
+          options = $(".drop .option").length;
+        $drop.find(".option.active").addClass("mini-hack");
+        $drop.toggleClass("visible");
+        $drop.removeClass("withBG");
+        $(this).css("top");
+        $drop.toggleClass("opacity");
+        $(".mini-hack").removeClass("mini-hack");
+        if ($drop.hasClass("visible")) {
+          setTimeout(function() {
+            $drop.addClass("withBG");
+          }, 400 + options * 100);
+        }
+        kidfromdrop = val1;
+        triggerAnimation1();
+        if (val1 !== "placeholder" || prevActive === "placeholder") {
+          $(".drop1 .option").removeClass("active");
+          $(this).addClass("active");
+        };
+      });
+    }
+
+    function process_drop() {
+      $(".drop .option").click(function() {
+        var val = $(this).attr("data-value"),
+          $drop = $(".drop"),
+          prevActive = $(".drop .option.active").attr("data-value"),
+          options = $(".drop .option").length;
+        $drop.find(".option.active").addClass("mini-hack");
+        $drop.toggleClass("visible");
+        $drop.removeClass("withBG");
+        $(this).css("top");
+        $drop.toggleClass("opacity");
+        $(".mini-hack").removeClass("mini-hack");
+        if ($drop.hasClass("visible")) {
+          setTimeout(function() {
+            $drop.addClass("withBG");
+          }, 400 + options * 100);
+        }
+        // alert(val);
+        adultfromdrop = val;
+        triggerAnimation();
+        if (val !== "placeholder" || prevActive === "placeholder") {
+          $(".drop .option").removeClass("active");
+          $(this).addClass("active");
+        };
+      });
+    }
+
+    function triggerAnimation() {
+      var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
+      $(".drop").css("width", "24em");
+      setTimeout(function() {
+        $(".drop").css("width", finalWidth + "em");
+      }, 400);
+    }
+
+    function triggerAnimation1() {
+      var finalWidth = $(".drop1").hasClass("visible") ? 22 : 20;
+      $(".drop1").css("width", "24em");
+      setTimeout(function() {
+        $(".drop1").css("width", finalWidth + "em");
+      }, 400);
+    }
+  </script>
+  <script>
+    (function(factory) {
+      if (typeof define === "function" && define.amd) {
+        define(["jquery", "../jquery.validate"], factory);
+      } else {
+        factory(jQuery);
+      }
+    }(function($) {
+
+      /*
+       * Translated default messages for the jQuery validation plugin.
+       * Locale: ZH (Chinese, 銝剜�� (Zh�㤔gw矇n), 瘙㕑祗, 瞍Ｚ��)
+       */
+      $.extend($.validator.messages, {
+        required: "This field is required.",
+        remote: "",
+        email: "Please enter a valid email address.",
+        url: "",
+        date: "",
+        dateISO: " (YYYY-MM-DD)",
+        number: "",
+        digits: "",
+        creditcard: "",
+        equalTo: "",
+        extension: "",
+        maxlength: $.validator.format(" {0} "),
+        minlength: $.validator.format(" {0} "),
+        rangelength: $.validator.format(" {0}  {1} "),
+        range: $.validator.format(" {0} �� {1} "),
+        max: $.validator.format(" {0} "),
+        min: $.validator.format(" {0} ")
+      });
+
+    }));
+
+    $.validator.setDefaults({
+      submitHandler: function() {
+        // alert("Sumit! \nYour result has saved");
+      }
+    });
+    $().ready(function() {
+      $("#form").validate();
+    });
+  </script>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+  <style>
+    #calendarHere {
+      position: relative;
+      height: 400px;
+    }
+
+    #logsHere {
+      width: 700px;
+      height: 150px;
+      overflow: auto;
+      border: 1px solid #dfdfdf;
+      font-family: Roboto, Arial, Helvetica;
+      font-size: 14px;
+      color: #404040;
+    }
+  </style>
+  <script>
+    var myCalendar;
+    var logObj;
+    var logInd = 0;
+    var logData = [];
+
+    function doOnLoad() {
+
+      myCalendar = new dhtmlXCalendarObject("calendarHere");
+      myCalendar.hideTime();
+      myCalendar.show();
+
+      myCalendar.attachEvent("onChange", function(d) {
+        logData.push((++logInd) + ") onChange event, " + myCalendar.getFormatedDate(null, d));
+        datefromcalendar = myCalendar.getFormatedDate(null, d);
+        writeLog();
+      });
+      myCalendar.attachEvent("onArrowClick", function(d_old, d_new) {
+        logData.push((++logInd) + ") onArrowClick event, " + myCalendar.getFormatedDate("%F %Y", d_new));
+        //writeLog();
+      });
+    }
+
+
+    function writeLog() {
+      if (!logObj) logObj = document.getElementById("logsHere");
+      var t = "";
+      for (var q = logData.length - 1; q >= Math.max(logData.length - 6, 0); q--) t += logData[q] + "<br>";
+      logObj.innerHTML = t;
+    }
+  </script>
+</head>
+
+<body class="bg-primary" onload="doOnLoad();">
+  <nav class="navbar navbar-expand-md navbar-dark w-100 bg-secondary" style="z-index: 8; position:fixed; top:0px; left:0px; background-color:#0000;">
+    <div class="container">
+      <a class="ico" href="#"><b class="text-muted "><font size="6" class="left:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html"><i class=""></i>
+              <font size="5">HOME</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#OUR_PLACE"><i class="fa d-inline fa-lg "></i>
+              <font size="5">OUR PLACE</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa d-inline fa-lg "></i>
+              <font size="5">MENU</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html#map"><i class="fa d-inline fa-lg "></i>
+              <font size="5">LOCATION</font>
+            </a>
+          </li>
+          <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div style="margin-bottom: 20px;">&nbsp;&nbsp;&nbsp; </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary py-1 h-25">
+    <div class="container ">
+      <div class="row text-center justify-content-center h-30">
+        <div class="col-md-4">
+          <!--<div id="calendarHere" bg-dark="" py-5="" class="bg-secondary" style="z-index: 4;  position:fixed; top:400px; left:550px;"></div>-->
+          <div bg-dark="" py-5="" class="bg-primary" style="z-index: 4; left:50px;">
+            <h5>&nbsp;&nbsp;&nbsp; </h5>
+          </div>
+          <div id="calendarHere" bg-dark="" py-5="" class="bg-primary" style="z-index: 4; left:50px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="logsHere" style="z-index: 8; position:fixed; top:80px;"></div>
+  <div class="bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center justify-content-center">Please select the numbers of people</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="drop" style="z-index: 11">
+            <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 5;"> Adult (s) </div>
+            <div class="option text-secondary" data-value="One"> One </div>
+            <div class="option text-secondary" data-value="Two"> Two </div>
+            <div class="option text-secondary" data-value="Three"> Three </div>
+            <div class="option text-secondary" data-value="Four"> Four </div>
+            <div class="option text-secondary" data-value="Five"> Five </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="drop1" style="z-index: 10">
+            <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 5;"> Kid (s) </div>
+            <div class="option text-secondary" data-value="One"> One </div>
+            <div class="option text-secondary" data-value="Two"> Two </div>
+            <div class="option text-secondary" data-value="Three"> Three </div>
+            <div class="option text-secondary" data-value="Four"> Four </div>
+            <div class="option text-secondary" data-value="Five"> Five </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container text-center justify-content-center">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">11: 30 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">01: 00 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">05: 30 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">07: 00 </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row  justify-content-center text-left">
+        <form id="form" name="form">
+          <div class="form-group "> <label class="text-secondary">Name (Required) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+            <input type="name" name="name" class="form-control w-100 bg-danger text-secondary" placeholder="Danny" required="">
+          </div>
+          <div class="form-group"> <label>Phone (Required)</label>
+            <input type="phone" name="phone" class="form-control w-100 bg-danger" placeholder="0912345678" required=""> </div>
+          <div class="form-group"> <label>Email</label>
+            <input type="email" name="email" class="form-control w-100 bg-danger" placeholder="username@domain.com"> </div>
+          <div class="form-group text-left"> <label>Note</label>
+            <input type="note" name="note" class="form-control w-100 bg-danger" placeholder="Specail requests?  (e.g. Two high chairs) "> </div>
+          <!-- <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Button </button> -->
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 w">
+    <div class="container">
+      <div class="row">
+        <div class="justify-content-center bg-danger p-0 w-50 text-center align-self-center col-md-12">
+          <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Button </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5 bg-dark text-white ">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 col-md-3 align-self-center text-center">
+          <a href="https://www.facebook.com/Zhan1852" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
+        </div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-instagram text-white fa-3x text-center"></i></div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3 text-center">
+          <p>© Copyright 2018 - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Custom select</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="menu.css" type="text/css">
+  <script>
+    $(document).ready(function() {
+    $(".drop .option").click(function() {
+      var val = $(this).attr("data-value"),
+          $drop = $(".drop"),
+          prevActive = $(".drop .option.active").attr("data-value"),
+          options = $(".drop .option").length;
+      $drop.find(".option.active").addClass("mini-hack");
+      $drop.toggleClass("visible");
+      $drop.removeClass("withBG");
+      $(this).css("top");
+      $drop.toggleClass("opacity");
+      $(".mini-hack").removeClass("mini-hack");
+      if ($drop.hasClass("visible")) {
+        setTimeout(function() {
+          $drop.addClass("withBG");
+        }, 400 + options*100); 
+      }
+      triggerAnimation();
+      if (val !== "placeholder" || prevActive === "placeholder") {
+        $(".drop .option").removeClass("active");
+        $(this).addClass("active");
+      };
+    });
+    
+    function triggerAnimation() {
+      var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
+      $(".drop").css("width", "24em");
+      setTimeout(function() {
+        $(".drop").css("width", finalWidth + "em");
+      }, 400);
+    }
+  });
+  </script>
+</head>
+
+<body>
+  <div class="drop">
+    <div class="option active placeholder" data-value="placeholder"> Choose wisely </div>
+    <div class="option" data-value="wow"> Wow! </div>
+    <div class="option" data-value="drop"> So dropdown! </div>
+    <div class="option" data-value="select"> Very select! </div>
+    <div class="option" data-value="custom"> Much custom! </div>
+    <div class="option" data-value="animation"> Such animation! </div>
+  </div>
+</body>
+
+</html>
