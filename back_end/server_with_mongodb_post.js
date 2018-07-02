@@ -68,10 +68,10 @@ app.post('/reservation_online', parseUrlencoded, function(request, response) {
     name: request.body.name,
     phone: request.body.phone,
     email: request.body.email,
-    date: request.body.date,
-    // time: request.body.time,
-    adult:request.body.adult,
-    kid:request.body.kid,
+    // date: request.body.date,
+    // // time: request.body.time,
+    // adult:request.body.adult,
+    // kid:request.body.kid,
     note: request.body.note
   }
   console.log(request.body);

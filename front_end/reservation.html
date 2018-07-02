@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="menu.css" type="text/css">
   <title>Reservation</title>
@@ -13,11 +15,74 @@
   <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css">
   <link rel="stylesheet" type="text/css" href="codebase/dhtmlxcalendar.css">
   <script src="codebase/dhtmlxcalendar.js"></script>
-  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+
   <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- <script src="js/index.js"></script> -->
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <!-- <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">  <!-This line (from MOOCs) will cause the CSS removed-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css"> -->
+  <link href="css/main.css" rel="stylesheet">
+  <script type="text/javascript" src="jquery.js"></script>
+  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+  <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+      <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+  <script>
+    (function(factory) {
+      if (typeof define === "function" && define.amd) {
+        define(["jquery", "../jquery.validate"], factory);
+      } else {
+        factory(jQuery);
+      }
+    }(function($) {
+
+      /*
+       * Translated default messages for the jQuery validation plugin.
+       * Locale: ZH (Chinese, 銝剜�� (Zh�㤔gw矇n), 瘙㕑祗, 瞍Ｚ��)
+       */
+      $.extend($.validator.messages, {
+        required: "This field is required.",
+        remote: "",
+        email: "Please enter a valid email address.",
+        url: "",
+        date: "",
+        dateISO: " (YYYY-MM-DD)",
+        number: "",
+        digits: "",
+        creditcard: "",
+        equalTo: "",
+        extension: "",
+        maxlength: $.validator.format(" {0} 345"),
+        minlength: $.validator.format(" {0} 345"),
+        rangelength: $.validator.format(" {0}  {1} "),
+        range: $.validator.format(" {0} �� {1} "),
+        // max: $.validator.format(" {0} "),
+        max: $.validator.format(" The number size is wrong"),
+        min: $.validator.format(" The number size is wrong")
+      });
+
+    }));
+
+    $.validator.setDefaults({
+      submitHandler: function() {
+        // alert("Sumit! \nYour result has saved");
+      }
+    });
+    $().ready(function() {
+      $("#form").validate();
+    });
+  </script>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
   <script>
     $(document).ready(function() {
 
@@ -35,37 +100,41 @@
       // var coor6 = oform.elements['coor6'].value;
       $("#buttonsubmit").click(function() {
 
-        var oform = document.forms['form'];
-        var name = oform.elements['name'].value;
-        var phone = oform.elements['phone'].value;
-        var email = oform.elements['email'].value;
-        var note = oform.elements['note'].value;
-        // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
-        // alert(email.toString());
-        alert(kidfromdrop);
-        alert(adultfromdrop);
-        $.ajax({
-          type: 'POST',
-          url: 'http://localhost:3000/reservation_online',
-          data: {
-            name: name.toString(),
-            phone: phone.toString(),
-            email: email.toString(),
-            note: note.toString(),
-            date: datefromcalendar,
-            adult: adultfromdrop,
-            kid: kidfromdrop
-          },
-          success: function(data) {
-            alert("Success!!");
-          },
-          error: function(err) {
-            alert(err);
-          },
-          contentType: "application/x-www-form-urlencoded",
-          dataType: "Text"
-
-        });
+          var oform = document.forms['form'];
+          var name = oform.elements['name'].value;
+          var phone = oform.elements['phone'].value;
+          var email = oform.elements['email'].value;
+          var note = oform.elements['note'].value;
+          // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
+          // alert(email.toString());
+          // alert(name.toString());
+          // alert(datefromcalendar);
+          if (oform.elements['name'].value) {
+            if (oform.elements['phone'].value)
+              $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/reservation_online',
+                data: {
+                  name: name.toString(),
+                  phone: phone.toString(),
+                  email: email.toString(),
+                  note: note.toString(),
+                  // date: datefromcalendar,
+                  // adult: adultfromdrop,
+                  // kid: kidfromdrop
+                },
+                success: function(data) {
+                  alert("Success!!");
+                  // window.location.href="http://140.112.21.122";  // Jump to the Home page
+                },
+                error: function(err) {
+                  alert(err);
+                },
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "Text"
+              });
+          }
+        }
       })
     }
 
@@ -138,55 +207,6 @@
       }, 400);
     }
   </script>
-  <script>
-    (function(factory) {
-      if (typeof define === "function" && define.amd) {
-        define(["jquery", "../jquery.validate"], factory);
-      } else {
-        factory(jQuery);
-      }
-    }(function($) {
-
-      /*
-       * Translated default messages for the jQuery validation plugin.
-       * Locale: ZH (Chinese, 銝剜�� (Zh�㤔gw矇n), 瘙㕑祗, 瞍Ｚ��)
-       */
-      $.extend($.validator.messages, {
-        required: "This field is required.",
-        remote: "",
-        email: "Please enter a valid email address.",
-        url: "",
-        date: "",
-        dateISO: " (YYYY-MM-DD)",
-        number: "",
-        digits: "",
-        creditcard: "",
-        equalTo: "",
-        extension: "",
-        maxlength: $.validator.format(" {0} "),
-        minlength: $.validator.format(" {0} "),
-        rangelength: $.validator.format(" {0}  {1} "),
-        range: $.validator.format(" {0} �� {1} "),
-        max: $.validator.format(" {0} "),
-        min: $.validator.format(" {0} ")
-      });
-
-    }));
-
-    $.validator.setDefaults({
-      submitHandler: function() {
-        // alert("Sumit! \nYour result has saved");
-      }
-    });
-    $().ready(function() {
-      $("#form").validate();
-    });
-  </script>
-  <style>
-    .error {
-      color: red;
-    }
-  </style>
   <style>
     #calendarHere {
       position: relative;
@@ -296,7 +316,7 @@
       </div>
     </div>
   </div>
-  <div id="logsHere" style="z-index: 8; position:fixed; top:80px;"></div>
+  <!--<div id="logsHere" style="z-index: 8; position:fixed; top:80px;"></div>-->
   <div class="bg-primary">
     <div class="container">
       <div class="row">
@@ -318,11 +338,11 @@
         <div class="col-md-6">
           <div class="drop1" style="z-index: 10">
             <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 5;"> Kid (s) </div>
+            <div class="option text-secondary" data-value="Zero"> Zero </div>
             <div class="option text-secondary" data-value="One"> One </div>
             <div class="option text-secondary" data-value="Two"> Two </div>
             <div class="option text-secondary" data-value="Three"> Three </div>
             <div class="option text-secondary" data-value="Four"> Four </div>
-            <div class="option text-secondary" data-value="Five"> Five </div>
           </div>
         </div>
       </div>
@@ -349,21 +369,46 @@
               type="name" name="name" class="form-control w-100 bg-danger text-secondary" placeholder="Danny" required="">
           </div>
           <div class="form-group"> <label>Phone (Required)</label>
-            <input type="phone" name="phone" class="form-control w-100 bg-danger" placeholder="0912345678" required=""> </div>
+            <input type="text" name="phone" class="form-control w-100 bg-danger" placeholder="0912345678" required="" > </div>
           <div class="form-group"> <label>Email</label>
             <input type="email" name="email" class="form-control w-100 bg-danger" placeholder="username@domain.com"> </div>
           <div class="form-group text-left"> <label>Note</label>
-            <input type="note" name="note" class="form-control w-100 bg-danger" placeholder="Specail requests?  (e.g. Two high chairs) "> </div>
-          <!-- <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Button </button> -->
+            <input type="note" name="note" class="form-control w-100 bg-danger" placeholder="Specail requests?  (e.g. Two high chairs) ">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="lead"> </p>
+                <div>
+                  <br> </div>
+                <div>
+                  <br> </div>
+                <p></p>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+          </div>
+          <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Sumbit </button>
         </form>
+        <!-- <form id="form" name="form">
+          <div class="form-group"> <label>Name</label>
+            <input type="" name="name" class="form-control w-50" placeholder="Danny" required=""> </div>
+          <div class="form-group"> <label>Account</label>
+            <input type="email" name="account" class="form-control w-50" placeholder="username@domain.com" required=""> </div>
+          <div class="form-group"> <label>Question1: Coordinate of mobile tag 1 (40%)</label>
+            <input type="coor1" name="coor1" class="form-control w-50" placeholder="(x,y)"> </div>
+          <div class="form-group"> <label>Question2: Coordinate of mobile tag 4 (40%)</label>
+            <input type="coor2" name="coor2" class="form-control w-50" placeholder="(x,y)"> </div>
+          <div class="form-group"> <label>Question3: Coordinates of mobile tag 6 (Bouns 20%)</label>
+            <input type="coor6" name="coor6" class="form-control w-50" placeholder="(x1,y1)-(x2,y2)-(x3,y3)-(x4,y4)-(x5,y5)"> </div>
+          <button class="btn btn-primary" id="buttonsubmit1">Submit</button>
+        </form> -->
       </div>
     </div>
   </div>
   <div class="py-5 w">
     <div class="container">
       <div class="row">
-        <div class="justify-content-center bg-danger p-0 w-50 text-center align-self-center col-md-12">
-          <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Button </button>
+        <div class="justify-content-center p-0 w-50 text-center align-self-center col-md-12 col-sm-7 bg-primary">
+          <!-- <button class="btn btn-danger text-secondary btn-lg h-20 px-0 w-50" href="" id="buttonsubmit">Submit </button> -->
         </div>
       </div>
     </div>
@@ -374,7 +419,7 @@
         <div class="col-4 col-md-3 align-self-center text-center">
           <a href="https://www.facebook.com/Zhan1852" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
         </div>
-        <div class="col-md-3 text-center"><i class="fa fa-fw fa-instagram text-white fa-3x text-center"></i></div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-instagram text-white fa-3x text-center align-self-center"></i></div>
         <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
         <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
       </div>

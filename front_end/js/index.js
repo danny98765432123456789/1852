@@ -12,7 +12,7 @@ $(document).ready(function() {
     // var coor2 = oform.elements['coor2'].value;
     // var coor6 = oform.elements['coor6'].value;
     $("#buttonsubmit").click(function() {
-
+      alert("123123123")
       var oform = document.forms['form'];
       var name = oform.elements['name'].value;
       var phone = oform.elements['phone'].value;
@@ -20,8 +20,8 @@ $(document).ready(function() {
       var note = oform.elements['note'].value;
       // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
       // alert(email.toString());
-      alert(kidfromdrop);
-      alert(adultfromdrop);
+      alert(name.toString());
+      alert(phone.toString());
       $.ajax({
         type: 'POST',
         url: 'http://localhost:3000/reservation_online',

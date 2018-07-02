@@ -56,6 +56,7 @@ $display4-size: 3.5 * $font-size-base;
 $border-radius: .25rem;
 
 
+
 @import 'bootstrap-4.0.0-beta.1';
 
 
@@ -227,10 +228,10 @@ body > * {
   transition: background-color 0.1s;
 }
 .drop.withBG .option:not(.placeholder):hover {
-  background-color: #5aafee;
+  background-color: #804938;
 }
 .drop.withBG .option:not(.placeholder).active {
-  background-color: #5aafee;
+  background-color: #804938;
 }
 .drop:after, .drop:before {
   content: "";
@@ -377,10 +378,10 @@ body > * {
   transition: background-color 0.1s;
 }
 .drop1.withBG .option:not(.placeholder):hover {
-  background-color: #5aafee;
+  background-color: #804938;
 }
 .drop1.withBG .option:not(.placeholder).active {
-  background-color: #5aafee;
+  background-color: #804938;
 }
 .drop1:after, .drop:before {
   content: "";
