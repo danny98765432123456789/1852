@@ -5551,6 +5551,13 @@ a.text-dark:focus, a.text-dark:hover {
 body > * {
   background-size: cover; }
 
+input[type=checkbox] {
+  visibility: hidden; }
+
+input[type=checkbox] {
+  outline: 2px solid red;
+  outline-offset: -2px; }
+
 .opaque-overlay {
   overflow: hidden;
   position: relative; }
@@ -5888,3 +5895,76 @@ body > * {
   opacity: 0;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%); }
+
+/* ROUNDED ONE */
+.roundedOne {
+  width: 28px;
+  height: 28px;
+  background: #BE9250;
+  background: -webkit-linear-gradient(top, #BE9250 0%, #BE9250 40%, #BE9250 100%);
+  background: -moz-linear-gradient(top, #BE9250 0%, #BE9250 40%, #BE9250 100%);
+  background: -o-linear-gradient(top, #BE9250 0%, #BE9250 40%, #BE9250 100%);
+  background: -ms-linear-gradient(top, #BE9250 0%, #BE9250 40%, #BE9250 100%);
+  background: linear-gradient(top, #BE9250 0%, #BE9250 40%, #BE9250 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BE9250', endColorstr='#BE9250',GradientType=0 );
+  margin: 20px auto;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  position: relative; }
+
+.roundedOne label {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  left: 4px;
+  top: 4px;
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+  background: -webkit-linear-gradient(top, #222 0%, #BE9250 100%);
+  background: -moz-linear-gradient(top, #222 0%, #BE9250 100%);
+  background: -o-linear-gradient(top, #222 0%, #BE9250 100%);
+  background: -ms-linear-gradient(top, #222 0%, #BE9250 100%);
+  background: linear-gradient(top, #222 0%, #BE9250 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BE9250', endColorstr='#BE9250',GradientType=0 ); }
+
+.roundedOne label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #00bf00;
+  background: -webkit-linear-gradient(top, #BE9250 0%, #BE9250 100%);
+  background: -moz-linear-gradient(top, #BE9250 0%, #BE9250 100%);
+  background: -o-linear-gradient(top, #BE9250 0%, #BE9250 100%);
+  background: -ms-linear-gradient(top, #BE9250 0%, #BE9250 100%);
+  background: linear-gradient(top, #BE9250 0%, #BE9250 100%);
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  top: 2px;
+  left: 2px;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5); }
+
+.roundedOne label:hover::after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: alpha(opacity=30);
+  opacity: 0.3; }
+
+.roundedOne input[type=checkbox]:checked + label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1; }

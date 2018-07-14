@@ -1,0 +1,119 @@
+{
+	"variables": [],
+	"info": {
+		"name": "inline reservation api sample",
+		"_postman_id": "75f35cbb-bad9-978b-1ee1-6de2c6a37cb3",
+		"description": "example of basic reservation api usage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create reservation",
+			"request": {
+				"url": "api-beta.inlineapps.io/reservations/-KvAB09OTNa05WpqvnRd/-Kwhdhoe_kwBIRgnzVcV",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "sample-key",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerName\": \"jason\",\n  \"gender\": 1,\n  \"phone\": \"+886972873307\",\n  \"email\": \"jason@inline.tw\",\n  \"datetime\": \"2018-08-01T13:00:00Z\",\n  \"shouldSendCreatedSMS\": false,\n  \"shouldNotifyCustomer\": false,\n  \"language\": \"en\",\n  \"groupSize\": 2,\n  \"numberOfKidSets\": 0,\n  \"numberOfKidChairs\": 0,\n  \"createdFrom\": \"web\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get reservation opening",
+			"request": {
+				"url": {
+					"raw": "api-beta.inlineapps.io/v2/bookingCapacities/-KvAB09OTNa05WpqvnRd/-Kwhdhoe_kwBIRgnzVcV?size=2",
+					"host": [
+						"api-beta",
+						"inlineapps",
+						"io"
+					],
+					"path": [
+						"v2",
+						"bookingCapacities",
+						"-KvAB09OTNa05WpqvnRd",
+						"-Kwhdhoe_kwBIRgnzVcV"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "filterDate",
+							"value": "1532068829964",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "sample-key",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "search reservation",
+			"request": {
+				"url": {
+					"raw": "api-beta.inlineapps.io/reservations/search?keyword=jason",
+					"host": [
+						"api-beta",
+						"inlineapps",
+						"io"
+					],
+					"path": [
+						"reservations",
+						"search"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "jason",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "sample-key",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

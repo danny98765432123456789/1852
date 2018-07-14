@@ -5,11 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="reservation.css" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!--For dynamic list -->
   <link rel="stylesheet" href="menu.css" type="text/css">
   <title>Reservation</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,102 +15,24 @@
   <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css">
   <link rel="stylesheet" type="text/css" href="codebase/dhtmlxcalendar.css">
   <script src="codebase/dhtmlxcalendar.js"></script>
+
   <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="js/reservation.js"></script>
-  <!-- <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">  <!-This line (from MOOCs) will cause the CSS removed-->
+  <!-- <script src="js/index.js"></script> -->
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <!-- <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">  <!-This line (from MOOCs) will cause the CSS removed-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css"> -->
   <link href="css/main.css" rel="stylesheet">
   <script type="text/javascript" src="jquery.js"></script>
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-  <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
-  <style>
-    /* The container */
-
-    .container {
-      display: block;
-      position: relative;
-      padding-left: 35px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      font-size: 15px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    /* Hide the browser's default radio button */
-
-    .container input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-    /* Create a custom radio button */
-
-    .checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 25px;
-      width: 25px;
-      background-color: #4f4f4f;
-      border-radius: 50%;
-    }
-    /* On mouse-over, add a grey background color */
-
-    .container:hover input~.checkmark {
-      background-color: #4f4f4f;
-    }
-    /* When the radio button is checked, add a blue background */
-
-    .container input:checked~.checkmark {
-      background-color: #BE9250;
-    }
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-
-    .checkmark:after {
-      content: "";
-      position: absolute;
-      display: none;
-    }
-    /* Show the indicator (dot/circle) when checked */
-
-    .container input:checked~.checkmark:after {
-      display: block;
-    }
-    /* Style the indicator (dot/circle) */
-
-    .container .checkmark:after {
-      top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #32376C;
-    }
-  </style>
-  <script>
-    $(document).ready(function() {
-      gender = 0;
-      $('.slectOne').on('change', function() {
-
-        $('.slectOne').not(this).prop('checked', false);
-        $('#result').html($(this).data("id"));
-        if ($(this).is(":checked")) {
-          gender = $(this).data("id");
-          //alert( gender);
-          //$('#result').html(gender);
-        } else
-        //$('#result').html('Empty...!');
-      });
-    });
-  </script>
+      <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
   <script>
     (function(factory) {
       if (typeof define === "function" && define.amd) {
@@ -165,6 +85,7 @@
   </style>
   <script>
     $(document).ready(function() {
+
       process_drop();
       process_drop1();
       process_sumit();
@@ -317,68 +238,26 @@
       myCalendar.attachEvent("onChange", function(d) {
         logData.push((++logInd) + ") onChange event, " + myCalendar.getFormatedDate(null, d));
         datefromcalendar = myCalendar.getFormatedDate(null, d);
-        alert(123);
-        alert(datefromcalendar);
-        var today = new Date(); // Fetch the current date
-        var today_dd = today.getDate();
-        var today_mm = today.getMonth() + 1; //January is 0!
-        var today_yyyy = today.getFullYear();
-        if (today_dd < 10) {
-          today_dd = '0' + today_dd
-        }
-        if (today_mm < 10) {
-          today_mm = '0' + today_mm
-        }
-
-        slected_yyyy = datefromcalendar.slice(0, 4);
-        slected_mm = datefromcalendar.slice(5, 7);
-        slected_dd = datefromcalendar.slice(8, 10);
-
-        if (slected_yyyy < today_yyyy) { // To filter out the wrong date
-          alert(" 錯誤日期\nThe worng date");
-          return;
-        }
-        if (slected_yyyy == today_yyyy && slected_mm < today_mm) {
-          alert(" 錯誤日期\nThe worng date");
-          return;
-        }
-        if (slected_yyyy == today_yyyy && slected_mm == today_mm && slected_dd < today_dd) {
-          alert(" 錯誤日期\nThe worng date");
-          return;
-        }
-
-        $.ajax("http://localhost:3000/reservation_online/" + datefromcalendar, {
-          type: 'GET',
-          success: function(result) {
-            remaining_obj = result[0]; //TO store in the remaining_obj (global)
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-          }
-        });
-
-
-
-        // writeLog();
+        writeLog();
       });
-      // myCalendar.attachEvent("onArrowClick", function(d_old, d_new) {
-      //   logData.push((++logInd) + ") onArrowClick event, " + myCalendar.getFormatedDate("%F %Y", d_new));
-      //   //writeLog();
-      // });
+      myCalendar.attachEvent("onArrowClick", function(d_old, d_new) {
+        logData.push((++logInd) + ") onArrowClick event, " + myCalendar.getFormatedDate("%F %Y", d_new));
+        //writeLog();
+      });
     }
 
 
-    // function writeLog() {
-    //   if (!logObj) logObj = document.getElementById("logsHere");
-    //   var t = "";
-    //   for (var q = logData.length - 1; q >= Math.max(logData.length - 6, 0); q--) t += logData[q] + "<br>";
-    //   logObj.innerHTML = t;
-    // }
+    function writeLog() {
+      if (!logObj) logObj = document.getElementById("logsHere");
+      var t = "";
+      for (var q = logData.length - 1; q >= Math.max(logData.length - 6, 0); q--) t += logData[q] + "<br>";
+      logObj.innerHTML = t;
+    }
   </script>
 </head>
 
 <body class="bg-primary" onload="doOnLoad();">
-  <nav class="navbar navbar-expand-md navbar-dark w-100 bg-secondary" style="z-index: 10; position:fixed; top:0px; left:0px; background-color:#0000;">
+  <nav class="navbar navbar-expand-md navbar-dark w-100 bg-secondary" style="z-index: 8; position:fixed; top:0px; left:0px; background-color:#0000;">
     <div class="container">
       <a class="ico" href="#"><b class="text-muted "><font size="6" class="left:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent"
@@ -447,7 +326,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="drop" style="z-index: 5">
+          <div class="drop" style="z-index: 11">
             <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 5;"> Adult (s) </div>
             <div class="option text-secondary" data-value="One"> One </div>
             <div class="option text-secondary" data-value="Two"> Two </div>
@@ -457,7 +336,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="drop1" style="z-index: 5">
+          <div class="drop1" style="z-index: 10">
             <div class="option active placeholder bg-danger text-secondary" data-value="placeholder" style="z-index: 5;"> Kid (s) </div>
             <div class="option text-secondary" data-value="Zero"> Zero </div>
             <div class="option text-secondary" data-value="One"> One </div>
@@ -473,46 +352,24 @@
     <div class="container text-center justify-content-center">
       <div class="row">
         <div class="col-md-12">
-          <button href="" id="1130" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" style="display:none">11: 30 </button>
-          <button href="" id="0100" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" style="display:none">01: 00 </button>
-          <button href="" id="0530" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" style="display:none">05: 30 </button>
-          <button href="" id="0700" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" style="display:none">07: 00 </button>
-          <!--<button  id="1130" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0 " >11: 30 </button>
-          <a  id="0100" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0">01: 00 </a>
-          <a href="" id="0530" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0">05: 30 </a>
-          <a href="" id="0700" class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0">07: 00 </a>-->
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">11: 30 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">01: 00 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">05: 30 </a>
+          <a class="btn btn-danger text-secondary btn-lg w-50 h-20 px-0" href="">07: 00 </a>
         </div>
       </div>
     </div>
   </div>
   <div class="py-5">
-    <div>
-      <!-- class="container" (originally) -->
+    <div class="container">
       <div class="row  justify-content-center text-left">
         <form id="form" name="form">
-          <!-- checkbox-->
-          <div class="">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4"><label class="container">Mr.
-                  <input type="radio" class="slectOne" name="radio" data-id="0" checked="checked" value="on">
-                  <span class="checkmark"></span>
-                </label></div>
-                <div class="col-md-4"><label class="container">Ms.
-                  <input type="radio" name="radio" class="slectOne" data-id="1" value="on">
-                  <span class="checkmark"></span>
-                </label></div>
-                <div class="col-md-4"><label class="container">None
-                  <input type="radio" name="radio" class="slectOne" data-id="2" value="on">
-                  <span class="checkmark"></span>
-                </label></div>
-              </div>
-            </div>
+          <div class="form-group "> <label class="text-secondary">Name (Required) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+            <input
+              type="name" name="name" class="form-control w-100 bg-danger text-secondary" placeholder="Danny" required="">
           </div>
-          <div class="form-group "> <label class="text-secondary"> Rservation Name (Required) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-            <input type="name" name="name" class="form-control w-100 bg-danger text-secondary" placeholder="Danny" required=""> </div>
-          <div class="form-group"> <label>Contact Phone (Required)</label>
-            <input type="text" name="phone" class="form-control w-100 bg-danger" placeholder="0912345678" required=""> </div>
+          <div class="form-group"> <label>Phone (Required)</label>
+            <input type="text" name="phone" class="form-control w-100 bg-danger" placeholder="0912345678" required="" > </div>
           <div class="form-group"> <label>Email</label>
             <input type="email" name="email" class="form-control w-100 bg-danger" placeholder="username@domain.com"> </div>
           <div class="form-group text-left"> <label>Note</label>
@@ -547,15 +404,24 @@
       </div>
     </div>
   </div>
-  <div class="py-5 bg-dark text-white justify-content-center">
+  <div class="py-5 w">
     <div class="container">
-      <div class="row align-self-center text-center">
-        <div class="col-md-6 align-self-center text-center">
+      <div class="row">
+        <div class="justify-content-center p-0 w-50 text-center align-self-center col-md-12 col-sm-7 bg-primary">
+          <!-- <button class="btn btn-danger text-secondary btn-lg h-20 px-0 w-50" href="" id="buttonsubmit">Submit </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 bg-dark text-white ">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 col-md-3 align-self-center text-center">
           <a href="https://www.facebook.com/Zhan1852" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
         </div>
-        <div class="col-md-6 text-center">
-          <a href="https://https://www.instagram.com/zhan1852" target="_blank"> <i class="fa fa-fw fa-instagram text-white fa-3x text-center align-self-center"></i></a>
-        </div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-instagram text-white fa-3x text-center align-self-center"></i></div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
+        <div class="col-md-3 text-center"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></div>
       </div>
       <div class="row">
         <div class="col-md-12 mt-3 text-center">
