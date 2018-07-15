@@ -1,13 +1,11 @@
-
-
 // Semantic color scheme
 $theme-colors: (
-  primary: #007bff,
-  secondary: #004EA3,
+  primary: #111822,
+  secondary: #BE9250,
   success: #28a745,
   info: #00fbff,
   warning: #ffc107,
-  danger: #dc3545,
+  danger: #984B34,
   light: #f8f9fa,
   dark: #343a40
 );
@@ -28,8 +26,11 @@ $enable-print-styles:       true !default;
 //
 // Theme settings.
 
-$body-bg: white;
-$body-color: #292b2c;
+$body-bg: #2b2821;
+
+
+$body-color: #BE9250;
+
 $body-color-inverse: invert($body-color) !default;
 $link-color: #007bff;
 
@@ -72,7 +73,7 @@ body > * {
     left: 0px;
     top: 0px; 
     pointer-events:none;
-    background: rgba(map-get($theme-colors, 'dark'), 0.25); 
+    background: rgba(map-get($theme-colors, 'dark'), 0.25);
   }
 }
 
@@ -95,6 +96,7 @@ body > * {
 }
 .ico{
   left: 20px;
+  height:-1px;
     /*width:100px;
     display:block;
     height:20px;
@@ -107,8 +109,306 @@ body > * {
     background-size:cover;
         /*position:absolute;*/
     position:absolute;
-    width:50px;
-    height:50px;
+    width:40px;
+    height:40px;
   	left: 40px;
     margin-left:-20px;
+}
+
+.drop {
+  width: 20em;
+  margin: 5em auto;
+  font-family: pfs-bold;
+  /*color: #86919a;*/
+  color: #984B34;
+  text-transform: uppercase;
+  position: relative;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+  will-change: width;
+}
+.drop .option {
+  padding: 1em;
+  cursor: pointer;
+  background-color: #984B34;
+}
+.drop .option:not(.active) {
+  display: none;
+  opacity: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.drop.visible {
+  -webkit-animation: bounce 1s;
+          animation: bounce 1s;
+  width: 24em;
+}
+.drop.visible:before, .drop.visible:after {
+  border-color: #fff;
+}
+.drop.visible:before {
+  opacity: 0;
+}
+.drop.visible:after {
+  opacity: 1;
+}
+.drop.visible .option {
+  color: #fff;
+  display: block;
+}
+.drop.opacity .option {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  opacity: 1;
+}
+.drop.opacity .option:nth-child(0) {
+  -webkit-transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, transform 0.5s 0s;
+  transition: opacity 0.5s 0s, transform 0.5s 0s, -webkit-transform 0.5s 0s;
+}
+.drop.opacity .option:nth-child(1) {
+  -webkit-transition: opacity 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, transform 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+}
+.drop.opacity .option:nth-child(2) {
+  -webkit-transition: opacity 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+}
+.drop.opacity .option:nth-child(3) {
+  -webkit-transition: opacity 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, transform 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+}
+.drop.opacity .option:nth-child(4) {
+  -webkit-transition: opacity 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, transform 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+}
+.drop.opacity .option:nth-child(5) {
+  -webkit-transition: opacity 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, transform 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+}
+.drop.opacity .option:nth-child(6) {
+  -webkit-transition: opacity 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, transform 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+}
+.drop.opacity .option:nth-child(7) {
+  -webkit-transition: opacity 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, transform 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+}
+.drop.opacity .option:nth-child(8) {
+  -webkit-transition: opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, transform 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+}
+.drop.opacity .option:nth-child(9) {
+  -webkit-transition: opacity 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, transform 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+}
+.drop.withBG .option {
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+.drop.withBG .option:not(.placeholder):hover {
+  background-color: #5aafee;
+}
+.drop.withBG .option:not(.placeholder).active {
+  background-color: #5aafee;
+}
+.drop:after, .drop:before {
+  content: "";
+  position: absolute;
+  top: 1.5em;
+  right: 1em;
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.2em solid #86919a;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.drop:before {
+  border-left: none;
+  border-top: none;
+  top: 1.2em;
+}
+.drop:after {
+  border-right: none;
+  border-bottom: none;
+  opacity: 0;
+}
+
+.mini-hack {
+  opacity: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+
+
+
+.drop1 {
+  width: 20em;
+  margin: 5em auto;
+  font-family: pfs-bold;
+  color: #984B34;
+  text-transform: uppercase;
+  position: relative;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+  will-change: width;
+}
+.drop1 .option {
+  padding: 1em;
+  cursor: pointer;
+  background-color: #984B34;
+}
+.drop1 .option:not(.active) {
+  display: none;
+  opacity: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.drop1.visible {
+  -webkit-animation: bounce 1s;
+          animation: bounce 1s;
+  width: 24em;
+}
+.drop1.visible:before, .drop.visible:after {
+  border-color: #fff;
+}
+.drop1.visible:before {
+  opacity: 0;
+}
+.drop1.visible:after {
+  opacity: 1;
+}
+.drop1.visible .option {
+  color: #fff;
+  display: block;
+}
+.drop1.opacity .option {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  opacity: 1;
+}
+.drop1.opacity .option:nth-child(0) {
+  -webkit-transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, transform 0.5s 0s;
+  transition: opacity 0.5s 0s, transform 0.5s 0s, -webkit-transform 0.5s 0s;
+}
+.drop1.opacity .option:nth-child(1) {
+  -webkit-transition: opacity 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, transform 0.5s 0.1s;
+  transition: opacity 0.5s 0.1s, transform 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+}
+.drop1.opacity .option:nth-child(2) {
+  -webkit-transition: opacity 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s, -webkit-transform 0.5s 0.2s;
+}
+.drop1.opacity .option:nth-child(3) {
+  -webkit-transition: opacity 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
+  transition: opacity 0.5s 0.3s, transform 0.5s 0.3s, -webkit-transform 0.5s 0.3s;
+}
+.drop1.opacity .option:nth-child(4) {
+  -webkit-transition: opacity 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, transform 0.5s 0.4s;
+  transition: opacity 0.5s 0.4s, transform 0.5s 0.4s, -webkit-transform 0.5s 0.4s;
+}
+.drop1.opacity .option:nth-child(5) {
+  -webkit-transition: opacity 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, transform 0.5s 0.5s;
+  transition: opacity 0.5s 0.5s, transform 0.5s 0.5s, -webkit-transform 0.5s 0.5s;
+}
+.drop1.opacity .option:nth-child(6) {
+  -webkit-transition: opacity 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, transform 0.5s 0.6s;
+  transition: opacity 0.5s 0.6s, transform 0.5s 0.6s, -webkit-transform 0.5s 0.6s;
+}
+.drop1.opacity .option:nth-child(7) {
+  -webkit-transition: opacity 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, transform 0.5s 0.7s;
+  transition: opacity 0.5s 0.7s, transform 0.5s 0.7s, -webkit-transform 0.5s 0.7s;
+}
+.drop1.opacity .option:nth-child(8) {
+  -webkit-transition: opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, transform 0.5s 0.8s;
+  transition: opacity 0.5s 0.8s, transform 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
+}
+.drop1.opacity .option:nth-child(9) {
+  -webkit-transition: opacity 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, transform 0.5s 0.9s;
+  transition: opacity 0.5s 0.9s, transform 0.5s 0.9s, -webkit-transform 0.5s 0.9s;
+}
+.drop1.withBG .option {
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+}
+.drop1.withBG .option:not(.placeholder):hover {
+  background-color: #5aafee;
+}
+.drop1.withBG .option:not(.placeholder).active {
+  background-color: #5aafee;
+}
+.drop1:after, .drop:before {
+  content: "";
+  position: absolute;
+  top: 1.5em;
+  right: 1em;
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.2em solid #86919a;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.drop1:before {
+  border-left: none;
+  border-top: none;
+  top: 1.2em;
+}
+.drop1:after {
+  border-right: none;
+  border-bottom: none;
+  opacity: 0;
+}
+
+.mini-hack {
+  opacity: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
