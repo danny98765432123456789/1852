@@ -2,6 +2,15 @@
 <html>
 
 <head>
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="js/smooth.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link rel="stylesheet" href="style.css">-->
@@ -12,7 +21,7 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!--For dynamic list -->
-  <link rel="stylesheet" href="menu.css" type="text/css">
+  <link rel="stylesheet" href="reservation.css" type="text/css">
   <title>Reservation</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,15 +37,18 @@
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css"> -->
-  <link href="css/main.css" rel="stylesheet">
+  <!-- <link href="css/main.css" rel="stylesheet"> -->
   <script type="text/javascript" src="jquery.js"></script>
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
   <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <style>
     /* The container */
 
-    .container {
+    .container1 {
       display: block;
       position: relative;
       padding-left: 35px;
@@ -50,7 +62,7 @@
     }
     /* Hide the browser's default radio button */
 
-    .container input {
+    .container1 input {
       position: absolute;
       opacity: 0;
       cursor: pointer;
@@ -68,12 +80,12 @@
     }
     /* On mouse-over, add a grey background color */
 
-    .container:hover input~.checkmark {
+    .container1:hover input~.checkmark {
       background-color: #4f4f4f;
     }
     /* When the radio button is checked, add a blue background */
 
-    .container input:checked~.checkmark {
+    .container1 input:checked~.checkmark {
       background-color: #BE9250;
     }
     /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -85,12 +97,12 @@
     }
     /* Show the indicator (dot/circle) when checked */
 
-    .container input:checked~.checkmark:after {
+    .container1 input:checked~.checkmark:after {
       display: block;
     }
     /* Style the indicator (dot/circle) */
 
-    .container .checkmark:after {
+    .container1 .checkmark:after {
       top: 9px;
       left: 9px;
       width: 8px;
@@ -389,13 +401,12 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html"><i class=""></i>
-              <!-- <a class="nav-link" href="#"><i class=""></i> -->
               <font size="5">HOME</font>
             </a>
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#OUR_PLACE"><i class="fa d-inline fa-lg "></i>
+            <a class="nav-link" href="index.html"><i class="fa d-inline fa-lg "></i>
               <font size="5">OUR PLACE</font>
             </a>
           </li>
@@ -409,7 +420,7 @@
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#map"><i class="fa d-inline fa-lg "></i>
+            <a class="nav-link" href="reservation.html"><i class="fa d-inline fa-lg "></i>
               <font size="5">LOCATION</font>
             </a>
           </li>
@@ -418,43 +429,6 @@
       </div>
     </div>
   </nav>
-  <!-- <nav class="navbar navbar-expand-md navbar-dark w-100 bg-secondary" style="z-index: 10; position:fixed; top:0px; left:0px; background-color:#0000;">
-      <div class="container">
-        <a class="ico" href="index.html"><b class="text-muted "><font size="6" class="left:5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-        <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html"><i class=""></i>
-                <font size="5">HOME</font>
-              </a>
-            </li>
-            <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#OUR_PLACE"><i class="fa d-inline fa-lg "></i>
-                <font size="5">OUR PLACE</font>
-              </a>
-            </li>
-            <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="menu.html"><i class="fa d-inline fa-lg "></i>
-                <font size="5">MENU</font>
-              </a>
-            </li>
-            <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#map"><i class="fa d-inline fa-lg "></i>
-                <font size="5">LOCATION</font>
-              </a>
-            </li>
-            <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -534,15 +508,15 @@
           <div class="">
             <div class="container">
               <div class="row">
-                <div class="col-md-4"><label class="container">Mr.
+                <div class="col-md-4"><label class="container1">Mr.
                   <input type="radio" class="slectOne" name="radio" data-id="0" checked="checked" value="on">
                   <span class="checkmark"></span>
                 </label></div>
-                <div class="col-md-4"><label class="container">Ms.
+                <div class="col-md-4"><label class="container1">Ms.
                   <input type="radio" name="radio" class="slectOne" data-id="1" value="on">
                   <span class="checkmark"></span>
                 </label></div>
-                <div class="col-md-4"><label class="container">None
+                <div class="col-md-4"><label class="container1">None
                   <input type="radio" name="radio" class="slectOne" data-id="2" value="on">
                   <span class="checkmark"></span>
                 </label></div>
