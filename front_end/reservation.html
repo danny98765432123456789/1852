@@ -16,6 +16,7 @@
   <!--<link rel="stylesheet" href="style.css">-->
   <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="reservation.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -41,9 +42,6 @@
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
   <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
   <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <style>
     /* The container */
 
@@ -178,126 +176,365 @@
   </style>
   <script>
     $(document).ready(function() {
+      let temp_adult = 0;
+      let temp_kid = 0;
+      let flag1 = 0;
+      let flag2 = 0;
       process_drop();
       process_drop1();
       process_sumit();
-    });
-
-    function process_sumit() {
-      // var oform = document.forms['form'];
-      // var name = oform.elements['name'].value;
-      // var account = oform.elements['account'].value;
-      // var coor1 = oform.elements['coor1'].value;
-      // var coor2 = oform.elements['coor2'].value;
-      // var coor6 = oform.elements['coor6'].value;
-      $("#buttonsubmit").click(function() {
-
+      process_time_button();
+      // setInterval(function() {
+      //   generate_valid_time();
+      // }, 1000);
+  
+      function process_time_button() {
+        $("#1130").click(function() {
+          temp_time_button = "1130";
+          alert(temp_time_button);
+        });
+        $("#0100").click(function() {
+          temp_time_button = "0100";
+        });
+        $("#0530").click(function() {
+          temp_time_button = "0530";
+        });
+        $("#0700").click(function() {
+          temp_time_button = "0700";
+        });
+      }
+  
+      function generate_valid_time() {
+        $("#1130").hide(1000);
+        $("#0100").hide(1000);
+        $("#0530").hide(1000);
+        $("#0700").hide(1000);
+        if (remaining_obj.time1130 >= temp_total) {
+          // $("#1130").hide(1000);
+          // $("#0100").hide(1000);
+          // $("#0530").hide(1000);
+          // $("#0700").hide(1000);
+          $("#1130").show(1000);
+        }
+        if (remaining_obj.time0100 >= temp_total) {
+          // $("#1130").hide(1000);
+          // $("#0100").hide(1000);
+          // $("#0530").hide(1000);
+          // $("#0700").hide(1000);
+          $("#0100").show(1000);
+        }
+        if (remaining_obj.time0530 >= temp_total) {
+          // $("#1130").hide(1000);
+          // $("#0100").hide(1000);
+          // $("#0530").hide(1000);
+          // $("#0700").hide(1000);
+          $("#0530").show(1000);
+        }
+        if (remaining_obj.time0700 >= temp_total) {
+          // $("#1130").hide(1000);
+          // $("#0100").hide(1000);
+          // $("#0530").hide(1000);
+          // $("#0700").hide(1000);
+          $("#0700").show(1000);
+        }
+      }
+  
+      function process_sumit() {
+        // var oform = document.forms['form'];
+        // var name = oform.elements['name'].value;
+        // var account = oform.elements['account'].value;
+        // var coor1 = oform.elements['coor1'].value;
+        // var coor2 = oform.elements['coor2'].value;
+        // var coor6 = oform.elements['coor6'].value;
+        $("#buttonsubmit").click(function() {
+  
+          // const monthNames = ["January", "February", "March", "April", "May", "June",
+          //   "July", "August", "September", "October", "November", "December"
+          // ];
+          // temp_month = monthNames[datefromcalendar.slice(5, 7)-1];
+          // alert("123123123");
           var oform = document.forms['form'];
           var name = oform.elements['name'].value;
           var phone = oform.elements['phone'].value;
           var email = oform.elements['email'].value;
           var note = oform.elements['note'].value;
+          // console.log(datefromcalendar);
+          alert(datefromcalendar);
+          alert(temp_adult);
           // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
           // alert(email.toString());
           // alert(name.toString());
-          // alert(datefromcalendar);
-          if (oform.elements['name'].value) {
-            if (oform.elements['phone'].value)
-              $.ajax({
-                type: 'POST',
-                url: 'http://localhost:3000/reservation_online',
-                data: {
-                  name: name.toString(),
-                  phone: phone.toString(),
-                  email: email.toString(),
-                  note: note.toString(),
-                  // date: datefromcalendar,
-                  // adult: adultfromdrop,
-                  // kid: kidfromdrop
-                },
-                success: function(data) {
-                  alert("Success!!");
-                  // window.location.href="http://140.112.21.122";  // Jump to the Home page
-                },
-                error: function(err) {
-                  alert(err);
-                },
-                contentType: "application/x-www-form-urlencoded",
-                dataType: "Text"
-              });
+          // alert(phone.toString());
+          $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/reservation_online',
+            data: {
+              name: name.toString(),
+              phone: "+886"+phone.toString().slice(1,9),
+              email: email.toString(),
+              note: note.toString(),
+              date: datefromcalendar,
+              adult: temp_adult,
+              kid: temp_kid,
+              time: temp_time_button
+            },
+            success: function(data) {
+              alert("您已訂位成功!!\nYou have successfully booked the seats!!");
+            },
+            error: function(err) {
+              alert(err);
+            },
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "Text"
+  
+          });
+        })
+      }
+  
+      function process_drop1() {
+        $(".drop1 .option").click(function() {
+          if (flag2 == 0) {
+            flag2 = 1
+          } else {
+            flag2 = 0
           }
-        }
-      })
-    }
-
-    function process_drop1() {
-      $(".drop1 .option").click(function() {
-        var val1 = $(this).attr("data-value"),
-          $drop = $(".drop1"),
-          prevActive = $(".drop .option.active").attr("data-value"),
-          options = $(".drop .option").length;
-        $drop.find(".option.active").addClass("mini-hack");
-        $drop.toggleClass("visible");
-        $drop.removeClass("withBG");
-        $(this).css("top");
-        $drop.toggleClass("opacity");
-        $(".mini-hack").removeClass("mini-hack");
-        if ($drop.hasClass("visible")) {
-          setTimeout(function() {
-            $drop.addClass("withBG");
-          }, 400 + options * 100);
-        }
-        kidfromdrop = val1;
-        triggerAnimation1();
-        if (val1 !== "placeholder" || prevActive === "placeholder") {
-          $(".drop1 .option").removeClass("active");
-          $(this).addClass("active");
-        };
-      });
-    }
-
-    function process_drop() {
-      $(".drop .option").click(function() {
-        var val = $(this).attr("data-value"),
-          $drop = $(".drop"),
-          prevActive = $(".drop .option.active").attr("data-value"),
-          options = $(".drop .option").length;
-        $drop.find(".option.active").addClass("mini-hack");
-        $drop.toggleClass("visible");
-        $drop.removeClass("withBG");
-        $(this).css("top");
-        $drop.toggleClass("opacity");
-        $(".mini-hack").removeClass("mini-hack");
-        if ($drop.hasClass("visible")) {
-          setTimeout(function() {
-            $drop.addClass("withBG");
-          }, 400 + options * 100);
-        }
-        // alert(val);
-        adultfromdrop = val;
-        triggerAnimation();
-        if (val !== "placeholder" || prevActive === "placeholder") {
-          $(".drop .option").removeClass("active");
-          $(this).addClass("active");
-        };
-      });
-    }
-
-    function triggerAnimation() {
-      var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
-      $(".drop").css("width", "24em");
-      setTimeout(function() {
-        $(".drop").css("width", finalWidth + "em");
-      }, 400);
-    }
-
-    function triggerAnimation1() {
-      var finalWidth = $(".drop1").hasClass("visible") ? 22 : 20;
-      $(".drop1").css("width", "24em");
-      setTimeout(function() {
-        $(".drop1").css("width", finalWidth + "em");
-      }, 400);
-    }
+          var val1 = $(this).attr("data-value"),
+            $drop = $(".drop1"),
+            prevActive = $(".drop .option.active").attr("data-value"),
+            options = $(".drop .option").length;
+          $drop.find(".option.active").addClass("mini-hack");
+          $drop.toggleClass("visible");
+          $drop.removeClass("withBG");
+          $(this).css("top");
+          $drop.toggleClass("opacity");
+          $(".mini-hack").removeClass("mini-hack");
+          if ($drop.hasClass("visible")) {
+            setTimeout(function() {
+              $drop.addClass("withBG");
+            }, 400 + options * 100);
+          }
+          kidfromdrop = val1;
+          if (kidfromdrop == 'placeholder') {
+            temp_kid = 0;
+          }
+          if (kidfromdrop == 'Zero') {
+            temp_kid = 0;
+          }
+          if (kidfromdrop == 'One') {
+            temp_kid = 1;
+          }
+          if (kidfromdrop == 'Two') {
+            temp_kid = 2;
+          }
+          if (kidfromdrop == 'Three') {
+            temp_kid = 3;
+          }
+          if (kidfromdrop == 'Four') {
+            temp_kid = 4;
+          }
+          temp_total = temp_adult + temp_kid;
+          if (!flag2) {
+            generate_valid_time()
+          }
+          // alert(temp_total);
+          triggerAnimation1();
+          if (val1 !== "placeholder" || prevActive === "placeholder") {
+            $(".drop1 .option").removeClass("active");
+            $(this).addClass("active");
+          };
+        });
+      }
+  
+      function process_drop() {
+        $(".drop .option").click(function() {
+          if (flag1 == 0) {
+            flag1 = 1
+          } else {
+            flag1 = 0
+          }
+          var val = $(this).attr("data-value"),
+            $drop = $(".drop"),
+            prevActive = $(".drop .option.active").attr("data-value"),
+            options = $(".drop .option").length;
+          $drop.find(".option.active").addClass("mini-hack");
+          $drop.toggleClass("visible");
+          $drop.removeClass("withBG");
+          $(this).css("top");
+          $drop.toggleClass("opacity");
+          $(".mini-hack").removeClass("mini-hack");
+          if ($drop.hasClass("visible")) {
+            setTimeout(function() {
+              $drop.addClass("withBG");
+            }, 400 + options * 100);
+          }
+          // alert(val);
+          adultfromdrop = val;
+          if (adultfromdrop != "placeholder") {
+            if (adultfromdrop == 'One') {
+              temp_adult = 1;
+            }
+            if (adultfromdrop == 'Two') {
+              temp_adult = 2;
+            }
+            if (adultfromdrop == 'Three') {
+              temp_adult = 3;
+            }
+            if (adultfromdrop == 'Four') {
+              temp_adult = 4;
+            }
+            if (adultfromdrop == 'Five') {
+              temp_adult = 5;
+            }
+          }
+          temp_total = temp_adult + temp_kid;
+          if (!flag1) {
+            generate_valid_time()
+          } // alert(temp_total);
+          triggerAnimation();
+          if (val !== "placeholder" || prevActive === "placeholder") {
+            $(".drop .option").removeClass("active");
+            $(this).addClass("active");
+          };
+        });
+      }
+  
+      function triggerAnimation() {
+        var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
+        $(".drop").css("width", "24em");
+        setTimeout(function() {
+          $(".drop").css("width", finalWidth + "em");
+        }, 400);
+      }
+  
+      function triggerAnimation1() {
+        var finalWidth = $(".drop1").hasClass("visible") ? 22 : 20;
+        $(".drop1").css("width", "24em");
+        setTimeout(function() {
+          $(".drop1").css("width", finalWidth + "em");
+        }, 400);
+      }
+    });
+      // $(document).ready(function() {
+      //   process_drop();
+      //   process_drop1();
+      //   process_sumit();
+      // });
+      //
+      // function process_sumit() {
+      //   // var oform = document.forms['form'];
+      //   // var name = oform.elements['name'].value;
+      //   // var account = oform.elements['account'].value;
+      //   // var coor1 = oform.elements['coor1'].value;
+      //   // var coor2 = oform.elements['coor2'].value;
+      //   // var coor6 = oform.elements['coor6'].value;
+      //   $("#buttonsubmit").click(function() {
+      //
+      //       var oform = document.forms['form'];
+      //       var name = oform.elements['name'].value;
+      //       var phone = oform.elements['phone'].value;
+      //       var email = oform.elements['email'].value;
+      //       var note = oform.elements['note'].value;
+      //       // alert(phone.toString()+ email.toString()+ note.toString()+ datefromcalendar+ adultfromdrop+ kidfromdrop);
+      //       // alert(email.toString());
+      //       // alert(name.toString());
+      //       // alert(datefromcalendar);
+      //       if (oform.elements['name'].value) {
+      //         if (oform.elements['phone'].value)
+      //           $.ajax({
+      //             type: 'POST',
+      //             url: 'http://localhost:3000/reservation_online',
+      //             data: {
+      //               name: name.toString(),
+      //               phone: phone.toString(),
+      //               email: email.toString(),
+      //               note: note.toString(),
+      //               // date: datefromcalendar,
+      //               // adult: adultfromdrop,
+      //               // kid: kidfromdrop
+      //             },
+      //             success: function(data) {
+      //               alert("Success!!");
+      //               // window.location.href="http://140.112.21.122";  // Jump to the Home page
+      //             },
+      //             error: function(err) {
+      //               alert(err);
+      //             },
+      //             contentType: "application/x-www-form-urlencoded",
+      //             dataType: "Text"
+      //           });
+      //       }
+      //     }
+      //   })
+      // }
+      //
+      // function process_drop1() {
+      //   $(".drop1 .option").click(function() {
+      //     var val1 = $(this).attr("data-value"),
+      //       $drop = $(".drop1"),
+      //       prevActive = $(".drop .option.active").attr("data-value"),
+      //       options = $(".drop .option").length;
+      //     $drop.find(".option.active").addClass("mini-hack");
+      //     $drop.toggleClass("visible");
+      //     $drop.removeClass("withBG");
+      //     $(this).css("top");
+      //     $drop.toggleClass("opacity");
+      //     $(".mini-hack").removeClass("mini-hack");
+      //     if ($drop.hasClass("visible")) {
+      //       setTimeout(function() {
+      //         $drop.addClass("withBG");
+      //       }, 400 + options * 100);
+      //     }
+      //     kidfromdrop = val1;
+      //     triggerAnimation1();
+      //     if (val1 !== "placeholder" || prevActive === "placeholder") {
+      //       $(".drop1 .option").removeClass("active");
+      //       $(this).addClass("active");
+      //     };
+      //   });
+      // }
+      //
+      // function process_drop() {
+      //   $(".drop .option").click(function() {
+      //     var val = $(this).attr("data-value"),
+      //       $drop = $(".drop"),
+      //       prevActive = $(".drop .option.active").attr("data-value"),
+      //       options = $(".drop .option").length;
+      //     $drop.find(".option.active").addClass("mini-hack");
+      //     $drop.toggleClass("visible");
+      //     $drop.removeClass("withBG");
+      //     $(this).css("top");
+      //     $drop.toggleClass("opacity");
+      //     $(".mini-hack").removeClass("mini-hack");
+      //     if ($drop.hasClass("visible")) {
+      //       setTimeout(function() {
+      //         $drop.addClass("withBG");
+      //       }, 400 + options * 100);
+      //     }
+      //     // alert(val);
+      //     adultfromdrop = val;
+      //     triggerAnimation();
+      //     if (val !== "placeholder" || prevActive === "placeholder") {
+      //       $(".drop .option").removeClass("active");
+      //       $(this).addClass("active");
+      //     };
+      //   });
+      // }
+      //
+      // function triggerAnimation() {
+      //   var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
+      //   $(".drop").css("width", "24em");
+      //   setTimeout(function() {
+      //     $(".drop").css("width", finalWidth + "em");
+      //   }, 400);
+      // }
+      //
+      // function triggerAnimation1() {
+      //   var finalWidth = $(".drop1").hasClass("visible") ? 22 : 20;
+      //   $(".drop1").css("width", "24em");
+      //   setTimeout(function() {
+      //     $(".drop1").css("width", finalWidth + "em");
+      //   }, 400);
+      // }
   </script>
   <style>
     #calendarHere {
@@ -331,7 +568,7 @@
         logData.push((++logInd) + ") onChange event, " + myCalendar.getFormatedDate(null, d));
         datefromcalendar = myCalendar.getFormatedDate(null, d);
         // alert(123);
-        alert(datefromcalendar);
+        // alert(datefromcalendar);
         var today = new Date(); // Fetch the current date
         var today_dd = today.getDate();
         var today_mm = today.getMonth() + 1; //January is 0!
@@ -400,13 +637,13 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html"><i class=""></i>
-              <font size="5">HOME</font>
+              <font size="5">首頁</font>
             </a>
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <li class="nav-item">
             <a class="nav-link" href="index.html"><i class="fa d-inline fa-lg "></i>
-              <font size="5">OUR PLACE</font>
+              <font size="5">關於我們</font>
             </a>
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -414,13 +651,13 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="menu.html"><i class="fa d-inline fa-lg "></i>
-              <font size="5">MENU</font>
+              <font size="5">菜單</font>
             </a>
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <li class="nav-item">
             <a class="nav-link" href="reservation.html"><i class="fa d-inline fa-lg "></i>
-              <font size="5">LOCATION</font>
+              <font size="5">聯絡我們</font>
             </a>
           </li>
           <a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -542,7 +779,7 @@
               <div class="col-md-6"></div>
             </div>
           </div>
-          <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Book</button>
+          <button class="btn btn-danger text-secondary btn-lg w-75 h-20 px-0" href="" id="buttonsubmit">Sumbit </button>
         </form>
         <!-- <form id="form" name="form">
           <div class="form-group"> <label>Name</label>
@@ -560,19 +797,28 @@
       </div>
     </div>
   </div>
-  <div class="py-5 bg-dark text-white justify-content-center">
+  <div class="justify-content-center text-dark bg-secondary py-1">
     <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="">&nbsp;&nbsp;</p>
+        </div>
+      </div>
       <div class="row align-self-center text-center justify-content-center">
         <div class="col-md-1 align-self-center text-center">
-          <a href="https://www.facebook.com/Zhan1852" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
+          <a href="https://www.facebook.com/Zhan1852" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-warning"></i></a>
         </div>
-        <div class="col-md-1 text-center">
-          <a href="https://https://www.instagram.com/zhan1852" target="_blank"> <i class="fa fa-fw fa-instagram text-white fa-3x text-center align-self-center"></i></a>
+        <div class="col-md-1 text-center p-3">
+          <a href="https://https://www.instagram.com/zhan1852" target="_blank"> <i class="fa fa-fw fa-instagram text-center align-self-center fa-3x text-warning"></i></a>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 mt-3 text-center">
-          <p>© Copyright 2018 - All rights reserved</p>
+          <p class="text-warning"> 聯絡電話: (02)2596-1852
+            <br>聯絡地址: 台北市中山區中山北路二段185號2樓
+            <br>2F., No.185, Sec. 2, Zhongshan N. Rd., Zhongshan Dist., Taipei City 104, Taiwan
+            <br> 營業時間: 週一到週日 11:30–15:00、17:30–22:00 </p>
+          <p class="text-warning"> © Copyright 2018 - All rights reserved</p>
         </div>
       </div>
     </div>

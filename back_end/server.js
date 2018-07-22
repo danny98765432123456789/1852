@@ -234,13 +234,14 @@ app.post('/reservation_online', parseUrlencoded, function(request, response) {
     name: request.body.name,
     phone: request.body.phone,
     email: request.body.email,
-    // date: request.body.date,
-    // // time: request.body.time,
-    // adult:request.body.adult,
-    // kid:request.body.kid,
-    note: request.body.note
+    date: request.body.date,
+    time: request.body.time,
+    adult:request.body.adult,
+    kid:request.body.kid,
+    note: request.body.note,
+    gender: request.body.gender
   }
-  console.log(request.body);
+  // console.log(request.body);
   console.log(json);
   // client.publish('NXG/moocs/gateway_id/student_name/cmd', JSON.stringify(jsonCMD));
 

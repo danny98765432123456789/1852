@@ -10,7 +10,8 @@ var reservation_online = new Schema({
   adult:String,
   kid:String,
   note: String,
-  timestamp: Number
+  timestamp: Number,
+  gender:Number
 }, {
   versionKey: false
 });
